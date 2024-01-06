@@ -92,7 +92,7 @@ class VenueController extends Controller
 
         $builder = DB::table('venues as v')->select('v.venue_id','v.venue_name');
 
-        $builder->when($request->has('category_id') ?? false, fn($builder) => $builder->leftjoin('venue_categoties as vc', 'v.venue_id', '=' ,'vc.venue_id')->
+        $builder->when($request->has('category_id') ?? false, fn($builder) => $builder->leftjoin('venue_categories as vc', 'v.venue_id', '=' ,'vc.venue_id')->
         where('vc.category_id',$category_id));
         
         $venues = $builder->get();
