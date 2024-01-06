@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Venue extends Model
+class Slot extends Model
 {
     use HasFactory;
 
     /**
      * Table Name
      */
-    protected $table = 'venues';
+    protected $table = 'slots';
 
     /**
      * Table Primary Key
      */
-    protected $primaryKey = 'venue_id';
+    protected $primaryKey = 'slot_id';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +25,6 @@ class Venue extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'venue_name',
-        'venue_type_id'
+        'slot',
     ];
 }

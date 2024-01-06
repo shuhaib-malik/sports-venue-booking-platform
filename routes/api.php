@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VenueController;
+use App\Http\Controllers\SlotsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +20,10 @@ use App\Http\Controllers\UserController;
 //     return $request->user();
 // });
 
-Route::post('login', [UserController::class, 'Login']);
+Route::post('login', [UserController::class, 'login']);
 Route::group(['middleware' => ['jwt.verify']], function() {
-    
+    Route::post('venue-booking', [VenueController::class, 'venueBooking']);
+    Route::get('venue', [VenueController::class, 'getAllVenues']);
+    Route::get('venue-category', [VenueController::class, 'getAllCategories']);
+    Route::get('slots', [SlotsController::class, 'getAllSlots']);
 });

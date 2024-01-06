@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 use Log;
 
 class UserController extends Controller
 {
     public $successStatus = 200;
 
-    public function Login(Request $request) {
+    public function login(Request $request) {
 
         $credentials = $request->only('email', 'password');
 
@@ -46,9 +47,19 @@ class UserController extends Controller
         }
 
         //if Token Created, return with success response and jwt token
+
+        $user_details = User::where('email',$request->email)->get();
+
+        $user = new User;
+        $user->user_id = $user_details[0]->user_id;
+        $user->user_name = $user_details[0]->name;
+        $user->email = $user_details[0]->email;
+        $user->mobile = $user_details[0]->phone_number;
+        $user->token = $token;
+
         return response()->json([
             'success' => true,
-            'token' => $token,
+            'user_details' => $user
         ]);
     }
 
