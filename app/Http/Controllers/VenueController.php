@@ -113,7 +113,7 @@ class VenueController extends Controller
             $data->venue_id = $venue->venue_id;
             $data->venue_name = $venue->venue_name;
             $data->venue_category = $venue_category;
-            $data->category = $category;
+            $data->category = $category ?? 'OTHER';
             $venues_array[] = $data;
         }
         return response()->json($venues_array, $this->successStatus);
