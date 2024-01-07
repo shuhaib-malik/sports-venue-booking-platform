@@ -9,10 +9,12 @@ steps to install
 
 4.run php artisan key:generate
 
-5.create a database and change database in .env file
+5.php artisan jwt:secret
 
-6.run php artisan migrate
+6.create a database and change database in .env file
 
-7.run php artisan db:seed --class=DatabaseSeeder
+7.run php artisan migrate
 
-8.php artisan serve
+8.run php artisan db:seed --class=DatabaseSeeder
+
+9.php artisan serve
